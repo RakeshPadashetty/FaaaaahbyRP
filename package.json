@@ -1,0 +1,52 @@
+{
+  "name": "faaaaahbyrp",
+  "displayName": "FaaaaahbyRP",
+  "description": "Plays a sound when a terminal command fails",
+  "version": "1.0.0",
+  "publisher": "local",
+  "engines": {
+    "vscode": "^1.93.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "FaaaaahbyRP",
+      "properties": {
+        "faaaaahbyrp.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable or disable error sound on terminal command failure"
+        },
+        "faaaaahbyrp.soundFile": {
+          "type": "string",
+          "default": "",
+          "description": "Path to a custom sound file (.wav or .mp3). Leave empty to use default sound."
+        },
+        "faaaaahbyrp.useSystemBeep": {
+          "type": "boolean",
+          "default": false,
+          "description": "Use system beep instead of sound file"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "build": "node esbuild.js",
+    "watch": "node esbuild.js --watch",
+    "package": "npx vsce package --no-dependencies"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.93.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.3.0",
+    "esbuild": "^0.20.0",
+    "@vscode/vsce": "^2.22.0"
+  }
+}
